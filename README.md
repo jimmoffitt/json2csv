@@ -1,12 +1,12 @@
 # json2csv
 
-This article provides answers to some frequently asked questions about converting JSON formatted data from Gnip into CSV files. Before deciding to perform this type of conversion, you should consider the following trade-offs.
+This article provides answers to some frequently asked questions about converting JSON Activity Stream data into CSV files. Before deciding to perform this type of conversion, you should consider the following trade-offs.
 
 1. JSON data from Gnip is multi-dimensional, with multiple levels of nested data. However, CSVs are two dimensional. Converting from JSON to CSV means that you are sacrificing detail and flexibility in the data by either flattening it, or discarding some fields from the data.
 2. If you are consuming the data into a custom app, retaining the data in JSON provides a level of flexibility not available with CSVs.  For example, field order is not important in JSON, where column order in CSVs is very important (and therefore, arguably more fragile).
 
-#### I need the JSON data converted to CSV. What do you need from me?
-We need a [tweet template](#tweet-templates) which identifies all the tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your tweet template.
+#### I need the JSON data converted to CSV. What do I need to do?
+First, you need a [tweet template](#tweet-templates) which identifies all the tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your tweet template.
 
 #### How are CSV column names determined?
 
