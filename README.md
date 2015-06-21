@@ -1,6 +1,6 @@
 # json2csv
 
-This article provides answers to some frequently asked questions about converting JSON Activity Stream data into CSV files. Before deciding to perform this type of conversion, you should consider the following trade-offs.
+This tool provides answers to some frequently asked questions about converting JSON Activity Stream data into CSV files. Before deciding to perform this type of conversion, you should consider the following trade-offs.
 
 1. JSON data from Gnip is multi-dimensional, with multiple levels of nested data. However, CSVs are two dimensional. Converting from JSON to CSV means that you are sacrificing detail and flexibility in the data by either flattening it, or discarding some fields from the data.
 2. If you are consuming the data into a custom app, retaining the data in JSON provides a level of flexibility not available with CSVs.  For example, field order is not important in JSON, where column order in CSVs is very important (and therefore, arguably more fragile).
