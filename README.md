@@ -1,6 +1,9 @@
 # json2csv
 
-This tool provides answers to some frequently asked questions about converting JSON Activity Stream data into CSV files. Before deciding to perform this type of conversion, you should consider the following trade-offs.
+The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. This tool works with an input folder and attempts to convert all *.json and *.json.gz file it finds there, writing the 
+resulting CSV files to an output folder. This tool will work with Tweet JSON produced with both Gnip Historical PowerTrack and Search API products. Thus, this tool was designed to convert JSON tweets in bulk. This tool could be extended to work with individual Tweets and thus be piped Tweets from a streaming client. 
+
+Before deciding to perform this type of conversion, you should consider the following trade-offs:
 
 1. JSON data from Gnip is multi-dimensional, with multiple levels of nested data. However, CSVs are two dimensional. Converting from JSON to CSV means that you are sacrificing detail and flexibility in the data by either flattening it, or discarding some fields from the data.
 2. If you are consuming the data into a custom app, retaining the data in JSON provides a level of flexibility not available with CSVs.  For example, field order is not important in JSON, where column order in CSVs is very important (and therefore, arguably more fragile).
