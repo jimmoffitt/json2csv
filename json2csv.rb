@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
-require_relative './common/config'
-require_relative './common/status'
-require_relative './common/logger'  #Not implemented yet.
+require_relative './common/app_config'
+require_relative './common/app_status'
+require_relative './common/app_logger'  #Not implemented yet.
 
 require 'csv'
 require 'json'
@@ -35,13 +35,13 @@ class Converter
         @keys = Array.new
 
         if status.nil? then
-            @status = Status.new
+            @status = AppStatus.new
         else
             @status = status
         end
 
         if logger.nil? then
-            @logger = Logger.new
+            @logger = AppLogger.new
         else
             @logger = logger
         end
@@ -503,8 +503,10 @@ class Converter
         #TODO - if we are handling compressed files, unzip, convert, then rezip?
 
         #tour output folder with current UUID and convert files
+        
+        #TODO: inspect the file(s) and determine the sources (HPT vs. Search).
 
-        Dir.glob("#{@config.dir_input}/*#{@config.job_uuid}*.json") do |file|
+        Dir.glob("#{@config.dir_input}/*.json") do |file|
 
             #p file
             csv_filename = "#{@config.dir_output}/#{File.basename(file, ".*")}.csv"
@@ -590,13 +592,13 @@ end
 #Exercising this object directly.
 if __FILE__ == $0  #This script code is executed when running this file.
 
-    #Config and Status objects are helpful.
-    oConfig = Config.new  #Create a configuration object.
+    #AppConfig and AppStatus objects are helpful.
+    oConfig = AppConfig.new  #Create a configuration object.
     oConfig.config_path = './config'  #This is the default, by the way, so not mandatory in this case.
     oConfig.config_name = 'config.yaml'
     oConfig.get_config_yaml
 
-    oStatus = Status.new #Create a Status file.
+    oStatus = AppStatus.new #Create a AppStatus file.
     #And load its contents.
     oStatus.get_status
     oStatus.status = 'Starting. Checking for things to do.'
