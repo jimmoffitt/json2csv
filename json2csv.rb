@@ -2,12 +2,12 @@
 
 require_relative './common/app_config'
 require_relative './common/app_status'
-require_relative './common/app_logger'  #Not implemented yet.
-
-require 'csv'
-require 'json'
 
 #JSON --> CSV is a one-way street.
+require 'json'
+require 'csv'
+require 'fileutils'
+
 
 class String
     def is_i?
@@ -40,15 +40,14 @@ class Converter
             @status = status
         end
 
-        if logger.nil? then
-            @logger = AppLogger.new
-        else
-            @logger = logger
-        end
+        #if logger.nil? then
+        #    @logger = AppLogger.new
+        #else
+        #    @logger = logger
+        #end
 
         @keys = Array.new
-        #@source_file = PtFile.new
-        #@target_file = PtFile.new
+
     end
 
     def deep_copy(o)
@@ -456,12 +455,12 @@ class Converter
         converted = 0
 
         #count the lines in CSV files, minus header.
-        Dir.glob("#{@config.dir_output}/*#{@config.job_uuid}*.json") do |file|
+        Dir.glob("#{@config.dir_output}/*.json") do |file|
             unconverted = unconverted + (File.read(file).scan(/\n/).count - 1 )
         end
 
         #count the lines in CSV files, minus header.
-        Dir.glob("#{@config.dir_input}/*#{@config.job_uuid}*.csv") do |file|
+        Dir.glob("#{@config.dir_input}/*.csv") do |file|
             converted = converted + (File.read(file).scan(/\n/).count - 1 )
         end
 
@@ -515,13 +514,33 @@ class Converter
 
             #This file has one or more activities in it, with a "info" footer.
             contents = File.read(file)
+
             activities = []
-            contents.split("\n")[0..-2].each { |line|    #drop last "info" member.
+            
+            #Inspect contents and determine the source of the data... Search API, HPT?
+            #Markers:
+            #  Search API: file starts with '{"results":['.
+            #  HPT: last line is a "info" footer.
+            #  Realtime: contents start with '{"id":'.  ##Not handling this yet....
+            
+            if (contents.start_with?('{"results":[')) then
+              
+              json_contents = JSON.parse(contents)
+
+              json_contents["results"].each  do |activity|
+                activities << activity
+              end
+
+            elsif contents.include?('"info":{"message":"Replay Request Completed"')
+
+              contents.split("\n")[0..-2].each { |line|    #drop last "info" member.
                 #Dev TODO: just added the "id": match, untested
                 if line.include?('"id":"') then
-                    activities << line
+                  activities << line
                 end
-            }
+              }
+
+            end
 
             activities.each { |activity|
 
@@ -583,7 +602,13 @@ class Converter
             }
 
             csv_file.close #Close new CSV file.
-            File.delete(file) #Delete json version.
+            
+            
+            if (!@config.save_json) then
+              File.delete(file) #Delete json version.
+            else #Move it to 'processed' folder.
+              FileUtils.mv(file, "#{@config.dir_processed}/#{file.split('/')[-1]}")
+            end
         end
     end
 end
@@ -594,7 +619,7 @@ if __FILE__ == $0  #This script code is executed when running this file.
 
     #AppConfig and AppStatus objects are helpful.
     oConfig = AppConfig.new  #Create a configuration object.
-    oConfig.config_path = './config'  #This is the default, by the way, so not mandatory in this case.
+    oConfig.config_path = './config/'  #This is the default, by the way, so not mandatory in this case.
     oConfig.config_name = 'config.yaml'
     oConfig.get_config_yaml
 
