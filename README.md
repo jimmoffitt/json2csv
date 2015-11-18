@@ -7,6 +7,7 @@ The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to 
 + Works with an input folder and attempts to convert all *.json and *.json.gz file it finds there, writing the 
 resulting CSV files to an output folder. 
 + Works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to convert JSON tweets in bulk. 
++ Retains JSON filename, e.g. MyTweets.json --> MyTweets.csv
  
 The json2csv tool is configured with a single [YAML](http://yaml.org/) file and provides basic logging. This tool is written in Ruby and references a few basic gems (json, csv, and logging). 
 
