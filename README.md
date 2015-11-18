@@ -2,23 +2,58 @@
 
 ### Overview
 
-The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. Tweet attributes of interest are indicated by designing a Tweet Template of choice. If the Tweet Template has an attribute it will be written to the output CSV files. If the Template does not have the attribute, it is dropped and not written.
+The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. Tweet attributes of interest are indicated by referencing a Tweet Template of choice. If the Tweet Template has an attribute it will be written to the output CSV files. If the Template does not have the attribute, it is dropped and not written. You can design your own Tweet Template, or use one of the provided example Templates.
 
 + Works with an input folder and attempts to convert all *.json and *.json.gz file it finds there, writing the 
 resulting CSV files to an output folder. 
-+ Works with Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to handle files and convert JSON tweets in bulk. 
-+ This tool could be extended to work with individual Tweets and thus be piped Tweets from a streaming client. 
++ Works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to convert JSON tweets in bulk. 
+ 
+The json2csv tool is configured with a single [YAML](http://yaml.org/) file and provides basic logging. This tool is written in Ruby and references a few basic gems (json, csv, and logging). 
 
-One of the first steps is to 'design' a [tweet template](#tweet-templates) which identifies all the tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your tweet template.
+One of the first steps is to 'design' a [Tweet Template](#tweet-templates) which identifies all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
 
 Before deciding to perform this type of conversion, you should consider the following trade-offs:
 
-1. JSON data from Gnip is multi-dimensional, with multiple levels of nested data. However, CSVs are two dimensional. Converting from JSON to CSV means that you are sacrificing detail and flexibility in the data by either flattening it, or discarding some fields from the data.
-2. If you are consuming the data into a custom app, retaining the data in JSON provides a level of flexibility not available with CSVs.  For example, field order is not important in JSON, where column order in CSVs is very important (and therefore, arguably more fragile).
+1. JSON data is multi-dimensional, with multiple levels of nested data. However, CSVs are two dimensional. Converting from JSON to CSV means that you are sacrificing detail and flexibility in the data by either flattening it, or discarding some fields from the data.
+2. If you are consuming the data into a custom app, retaining the data in JSON provides a level of flexibility not available with CSVs.  For example, field order is not important in JSON, where column order in CSVs is very important (and therefore, arguably more fragile). 
+3. It is recommended to save the source JSON. It represents all the available metadata. You may decide to go back and convert metadata you did not include the first time. 
 
 ### Getting Started
 
-#### Installing this tool.
+#### Installing tool
+
+This tool is written in Ruby and references a few basic gems (json, csv, and logging).
+
++ Clone respository.
++ bundle install
++ Configure the config.yaml. Its defaults provide a place to start.
++ Place Tweet JSON files to convert in the app's inbox.
++ Run $ruby json2csv.rb 
+
+#### Configuring tool
+
+```
+json2csv:
+  activity_template: ./templates/tweet_ids.json
+  dir_input: ./inbox
+  dir_output: ./outbox
+  save_json: true
+  dir_processed: ./input/processed
+  compress_csv: false #TODO: conventions? retain compression?
+
+  arrays_to_collapse: hashtags,user_mentions,twitter_entities.urls,gnip.urls,matching_rules,topics
+  header_overrides: actor.location.objectType,actor.location.displayName
+
+header_mappings: {}
+
+logging:
+  name: json2csv.log
+  log_path: ./log/
+  warn_level: info
+  size: 10 #MB
+  keep: 2
+
+```
 
 
 #### Tweet Templates<a id="tweet-templates" class="tall">&nbsp;</a>
@@ -71,8 +106,10 @@ It can be difficult and time-consuming to find just the perfect tweet 'in the wi
   <pre>gnip.matching_rules.0.value != gnip.matching_rules.value</pre>
 + Metadata values do not have to be internally consistent since the values of the JSON name/value pairs does not matter. All that matters are the JSON names. With the template tweet examples below you will see inconsistencies. For example the geographic metadata can be inconsistent with an actor location in one place and the Gnip Profile Geo in another.
 
-We have pre-built several examples:
+Here are several pre-built examples:
 
++ ['Tweet IDs' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_ids.json): For selecting just the numeric Tweet IDs.
++ + ['User IDs' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/user_ids.json):For selecting just the numeric User IDs.
 + ['Small' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_small.json): For just selecting the basics.
 + ['Everything' Retweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json): Includes complete data, including the full Retweet and nested Tweet. Includes all Twitter entities and all attributes (like hashtag indices), Twitter geo metadata, and all Gnip enrichments.
 + ['Standard' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json): No Twitter geo metadata, all twitter entities included with select attributes (i.e., no hashtag indices), includes standard Gnip enrichments (matching rules, urls, language). Retweets are indicated by verb, original tweet id, and author name/id.
