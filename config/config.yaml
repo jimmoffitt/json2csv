@@ -1,0 +1,20 @@
+json2csv:
+  activity_template: ./templates/tweet_ids.json
+  dir_input: ./inbox
+  dir_output: ./outbox
+  save_json: true
+  dir_processed: ./input/processed
+  compress_csv: false #TODO: conventions? retain compression?
+
+  arrays_to_collapse: hashtags,user_mentions,twitter_entities.urls,gnip.urls,matching_rules,topics
+  header_overrides: actor.location.objectType,actor.location.displayName
+
+header_mappings: {}
+
+logging:
+  name: json2csv.log
+  log_path: ./log/
+  warn_level: info
+  size: 10 #MB
+  keep: 2
+  
