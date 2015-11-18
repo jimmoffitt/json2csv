@@ -1,0 +1,359 @@
+{
+  "id": "tag:search.twitter.com,2005:399056944784080896",
+  "objectType": "activity",
+  "actor": {
+    "objectType": "person",
+    "id": "id:twitter.com:362790884",
+    "link": "http:\/\/www.twitter.com\/whoRetweetedThis",
+    "displayName": "whoRetweetedThis",
+    "postedTime": "2011-08-27T00:23:38.000Z",
+    "image": "https:\/\/pbs.twimg.com\/profile_images\/378800000523087592\/d0cf30aac38bb22753dfc310369cd30a_normal.jpeg",
+    "summary": "I love to retweet and live Colorado",
+    "links": [
+      {
+        "href": null,
+        "rel": "me"
+      }
+    ],
+    "friendsCount": 702,
+    "followersCount": 900,
+    "listedCount": 0,
+    "statusesCount": 16000,
+    "utcOffset": "-25200",
+    "twitterTimeZone": "Mountain Time (US & Canada)",
+    "verified": false,
+    "preferredUsername": "whoRetweetedThis",
+    "languages": [
+      "en"
+    ],
+    "location": {
+      "objectType": "place",
+      "displayName": "Boulder Colorado"
+    },
+    "favoritesCount": 1414
+  },
+  "verb": "share",
+  "postedTime": "2013-11-09T06:12:44.000Z",
+  "generator": {
+    "displayName": "Twitter for iPad",
+    "link": "http:\/\/twitter.com\/#!\/download\/ipad"
+  },
+  "provider": {
+    "objectType": "service",
+    "displayName": "Twitter",
+    "link": "http:\/\/www.twitter.com"
+  },
+  "link": "http:\/\/twitter.com\/icylylicious08\/statuses\/399056944784080896",
+  "body": "RT @originalAuthor: my original post",
+  "object": {
+    "id": "tag:search.twitter.com,2005:399056824369815552",
+    "objectType": "activity",
+    "actor": {
+      "objectType": "person",
+      "id": "id:twitter.com:1306169648",
+      "link": "http:\/\/www.twitter.com\/originalAuthor",
+      "displayName": "Sis \u2665",
+      "postedTime": "2013-03-27T01:31:46.000Z",
+      "image": "https:\/\/pbs.twimg.com\/profile_images\/378800000707595173\/37f307990466b3c1499c29bdb2232160_normal.jpeg",
+      "summary": "I love tweeting original posts and live in NYC",
+      "links": [
+        {
+          "href": null,
+          "rel": "me"
+        }
+      ],
+      "friendsCount": 208,
+      "followersCount": 308,
+      "listedCount": 0,
+      "statusesCount": 3454,
+      "twitterTimeZone": "Eastern Time (US & Canada)",
+      "verified": false,
+      "utcOffset": "28800",
+      "preferredUsername": "originalAuthor",
+      "languages": [
+        "en"
+      ],
+      "location": {
+        "objectType": "place",
+        "displayName": "the Big Apple"
+      },
+      "favoritesCount": 255
+    },
+    "verb": "post",
+    "postedTime": "2013-11-09T06:12:15.000Z",
+    "generator": {
+      "displayName": "web",
+      "link": "http:\/\/twitter.com"
+    },
+    "provider": {
+      "objectType": "service",
+      "displayName": "Twitter",
+      "link": "http:\/\/www.twitter.com"
+    },
+    "link": "http:\/\/twitter.com\/originalAuthor\/statuses\/399056824369815552",
+    "body": "my original post",
+    "object": {
+      "objectType": "note",
+      "id": "object:search.twitter.com,2005:399056824369815552",
+      "summary": "my original post",
+      "link": "http:\/\/twitter.com\/originalAuthor\/statuses\/399056824369815552",
+      "postedTime": "2013-11-09T06:12:15.000Z"
+    },
+    "favoritesCount": 0,
+    "twitter_entities": {
+      "hashtags": [
+        {
+          "text": "HappyNewYear",
+          "indices": [
+            86,
+            90
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "text": "CO",
+          "indices": [
+            57,
+            62
+          ]
+        }
+      ],
+      "urls": [
+        {
+          "url": "https: \/\/t.co\/OY7MlhFsGB",
+          "expanded_url": "https: \/\/github.com\/jimmoffitt\/rbSearchAPI",
+          "display_url": "github.com\/jimmoffitt\/rbS\u2026",
+          "indices": [
+            63,
+            85
+          ]
+        }
+      ],
+      "user_mentions": [
+        {
+          "screen_name": "StJulienHotel",
+          "name": "StJulienHotel",
+          "id": 78946410,
+          "id_str": "78946410",
+          "indices": [
+            80,
+            94
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 4.4675670928171e+17,
+          "id_str": "446756709281705984",
+          "indices": [
+            112,
+            134
+          ],
+          "media_url": "http: \/\/pbs.twimg.com\/media\/BjMy3C3CMAA3gTR.jpg",
+          "media_url_https": "https: \/\/pbs.twimg.com\/media\/BjMy3C3CMAA3gTR.jpg",
+          "url": "http: \/\/t.co\/JgyGsCKWTK",
+          "display_url": "pic.twitter.com\/JgyGsCKWTK",
+          "expanded_url": "http: \/\/twitter.com\/StJulienHotel\/status\/446756709273317376\/photo\/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 450,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "twitter_lang": "en"
+  },
+  "favoritesCount": 0,
+  "location": {
+    "objectType": "place",
+    "displayName": "Littleton, CO",
+    "name": "Littleton",
+    "country_code": "United States",
+    "twitter_country_code": "US",
+    "link": "https:\/\/api.twitter.com\/1.1\/geo\/id\/910868722e1e4825.json",
+    "geo": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -105.062023,
+            39.565332
+          ],
+          [
+            -105.062023,
+            39.62983
+          ],
+          [
+            -104.973551,
+            39.62983
+          ],
+          [
+            -104.973551,
+            39.565332
+          ]
+        ]
+      ]
+    }
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      39.62319962,
+      -105.01208369
+    ]
+  },
+  "twitter_entities": {
+    "hashtags": [
+      {
+        "text": "HappyNewYear",
+        "indices": [
+          73,
+          87
+        ]
+      }
+    ],
+    "symbols": [
+      {
+        "text": "CO",
+        "indices": [
+          57,
+          62
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "http:\/\/t.co\/Fwt3DxRt8y",
+        "expanded_url": "http:\/\/ift.tt\/1hPwJz0",
+        "display_url": "ift.tt\/1hPwJz0",
+        "indices": [
+          63,
+          85
+        ]
+      }
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "StJulienHotel",
+        "name": "StJulienHotel",
+        "id": 78946410,
+        "id_str": "78946410",
+        "indices": [
+          3,
+          17
+        ]
+      }
+    ],
+    "media": [
+      {
+        "id": 4.4675670928171e+17,
+        "id_str": "446756709281705984",
+        "indices": [
+          139,
+          140
+        ],
+        "media_url": "http: \/\/pbs.twimg.com\/media\/BjMy3C3CMAA3gTR.jpg",
+        "media_url_https": "https: \/\/pbs.twimg.com\/media\/BjMy3C3CMAA3gTR.jpg",
+        "url": "http: \/\/t.co\/JgyGsCKWTK",
+        "display_url": "pic.twitter.com\/JgyGsCKWTK",
+        "expanded_url": "http: \/\/twitter.com\/StJulienHotel\/status\/446756709273317376\/photo\/1",
+        "type": "photo",
+        "sizes": {
+          "medium": {
+            "w": 600,
+            "h": 450,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 1024,
+            "h": 768,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "small": {
+            "w": 340,
+            "h": 255,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  },
+  "twitter_filter_level": "medium",
+  "twitter_lang": "en",
+  "retweetCount": 1,
+  "gnip": {
+    "matching_rules": [
+      {
+        "value": "is: retweetprofile_country_code: ph",
+        "tag": null
+      }
+    ],
+    "urls": [
+      {
+        "url": "https: \/\/t.co\/UpVhmiFDAv",
+        "expanded_url": "https: \/\/github.com\/jimmoffitt\/pt-dm\/blob\/master\/ReadMe.md",
+        "expanded_status": 200
+      }
+    ],
+    "klout_score": 43,
+    "klout_profile": {
+      "topics": [
+        {
+          "klout_topic_id": "10000000000000008253",
+          "displayName": "Twitter",
+          "link": "http: \/\/klout.com\/topic\/id\/10000000000000008253"
+        }
+      ],
+      "klout_user_id": "37717651645477387",
+      "link": "http: \/\/klout.com\/user\/id\/37717651645477387"
+    },
+    "language": {
+      "value": "id"
+    },
+    "profileLocations": [
+      {
+        "objectType": "place",
+        "geo": {
+          "type": "point",
+          "coordinates": [
+            -105.10193,
+            40.16721
+          ]
+        },
+        "address": {
+          "country": "United States",
+          "countryCode": "US",
+          "locality": "Longmont",
+          "region": "Colorado",
+          "subRegion": "BoulderCounty"
+        },
+        "displayName": "Longmont, Colorado, United States"
+      }
+    ]
+  }
+}
