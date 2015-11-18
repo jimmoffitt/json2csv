@@ -118,10 +118,10 @@ It can be difficult and time-consuming to find just the perfect tweet 'in the wi
 Here are several pre-built examples:
 
 + ['Tweet IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_ids.json): For selecting just the numeric Tweet IDs.
-+ + ['User IDs' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/user_ids.json):For selecting just the numeric User IDs.
-+ ['Small' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_small.json): For just selecting the basics.
++ + ['User IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/schema/user_ids.json):For selecting just the numeric User IDs.
++ ['Small' Tweet Template](https://github.com/jimmoffittjson2csv/blob/master/schema/tweet_small.json): For just selecting the basics.
 + ['Everything' Retweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json): Includes complete data, including the full Retweet and nested Tweet. Includes all Twitter entities and all attributes (like hashtag indices), Twitter geo metadata, and all Gnip enrichments.
-+ ['Standard' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json): No Twitter geo metadata, all twitter entities included with select attributes (i.e., no hashtag indices), includes standard Gnip enrichments (matching rules, urls, language). Retweets are indicated by verb, original tweet id, and author name/id.
++ ['Standard' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json): Handles both original Tweets and Retweets. No Twitter geo metadata, all twitter entities included with select attributes (i.e., no hashtag indices), includes standard Gnip enrichments (matching rules, urls, language). Retweets are indicated by verb, original tweet id, and author name/id.
 + ['Standard + Geo' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard_geo.json): Same as the 'Standard' template, but also includes Twitter geo metadata.
 + ['Profile Geo' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_profile_geo.json): Same as 'Standard Geo' Template, with the addition of the Profile Geo enrichment.
 + ['All gnip enrichments' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_all_enrichments.json): Same as 'Profile Geo' Template, with the addition of Klout Topics data.
