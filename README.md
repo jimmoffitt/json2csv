@@ -10,7 +10,7 @@ resulting CSV files to an output folder.
  
 The json2csv tool is configured with a single [YAML](http://yaml.org/) file and provides basic logging. This tool is written in Ruby and references a few basic gems (json, csv, and logging). 
 
-One of the first steps is to 'design' a [Tweet Template](#tweet-templates) which identifies all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
+One of the first steps is to 'design' (or choose from our examples) a [Tweet Template](#tweet-templates) which identifies all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
 
 Before deciding to perform this type of conversion, you should consider the following trade-offs:
 
@@ -18,23 +18,32 @@ Before deciding to perform this type of conversion, you should consider the foll
 2. If you are consuming the data into a custom app, retaining the data in JSON provides a level of flexibility not available with CSVs.  For example, field order is not important in JSON, where column order in CSVs is very important (and therefore, arguably more fragile). 
 3. It is recommended to save the source JSON. It represents all the available metadata. You may decide to go back and convert metadata you did not include the first time. 
 
+##### Some things this tool does not do
+
++ May not support 'original' Tweet format. (The Converter Class knows about JSON, CSV, Hashes, and Arrays, but shouldn't care whether it is 'original' or 'Activity Stream' format.  Configured 'attribute' mappings depend on the format, but hopefully the conversion code does not. 
++ This tool does not consolidate files or compile data. See [consolidator project] for that functionality.
+
 ### Getting Started
 
 #### Installing tool
 
-This tool is written in Ruby and references a few basic gems (json, csv, and logging).
-
 + Clone respository.
-+ bundle install
++ bundle install.
++ Select a Tweet Template.
 + Configure the config.yaml. Its defaults provide a place to start.
 + Place Tweet JSON files to convert in the app's inbox.
 + Run $ruby json2csv.rb 
++ Look for CSV files in the app's outbox.
 
-#### Configuring tool
+#### Configuring json2csv
+
+This tool defaults to ./config/config.yaml for its configuration/settings file. Below are all of the default settings.
+
++ TODO: document header_mappings: {} and give non-nil example.
 
 ```
 json2csv:
-  activity_template: ./templates/tweet_ids.json
+  activity_template: ./templates/tweet_standard.json
   dir_input: ./inbox
   dir_output: ./outbox
   save_json: true
@@ -95,7 +104,7 @@ A couple things to note about this JSON to CSV conversion:
 + Arrays are stored as comma-separated values inside double quotes.
 
 
-####Example Tweet Templates
+#### Example Tweet Templates
 
 It can be difficult and time-consuming to find just the perfect tweet 'in the wild', an actual tweet that encapsulates all metadata you care about. So you may need to 'hand build' your own template tweet. The means assembling an JSON object by picking and choosing the fields you want and copying them into a JSON file. When doing this, keep the following details in mind:
 
@@ -108,7 +117,7 @@ It can be difficult and time-consuming to find just the perfect tweet 'in the wi
 
 Here are several pre-built examples:
 
-+ ['Tweet IDs' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_ids.json): For selecting just the numeric Tweet IDs.
++ ['Tweet IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_ids.json): For selecting just the numeric Tweet IDs.
 + + ['User IDs' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/user_ids.json):For selecting just the numeric User IDs.
 + ['Small' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_small.json): For just selecting the basics.
 + ['Everything' Retweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json): Includes complete data, including the full Retweet and nested Tweet. Includes all Twitter entities and all attributes (like hashtag indices), Twitter geo metadata, and all Gnip enrichments.
@@ -116,6 +125,12 @@ Here are several pre-built examples:
 + ['Standard + Geo' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard_geo.json): Same as the 'Standard' template, but also includes Twitter geo metadata.
 + ['Profile Geo' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_profile_geo.json): Same as 'Standard Geo' Template, with the addition of the Profile Geo enrichment.
 + ['All gnip enrichments' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_all_enrichments.json): Same as 'Profile Geo' Template, with the addition of Klout Topics data.
+
+#### Use-case Examples
+
++ Extract only Tweet IDs for input into an Engagement API client.
++ Extract only User IDs for input into an Engagement API client.
+
 
 
 ### Details, Details, Details
@@ -183,5 +198,27 @@ id,actor.id,hashtags
 ##### How long will the conversion process take?
 It depends on how many files are being processed, how many tweets are being converted, and how many attributes are included in the template tweet. If there are 10 million tweets, and 200 tweet attributes in the template, there are 2 billion attributes to process.
 
-Using a [standard template tweet] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json) approximately 3 million tweets can be processed per hour. Large datasets can take hours to process. I wonder how fast it would run if written in Python...
+Using a [standard template tweet] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json) approximately 5 million tweets can be processed per hour. Massive datasets can take hours to process. I wonder how fast it would run if written in Python...
+
+##### Some coding details...
+
+File handling:
+ + name
+ + dir, whether it ends with a separator should not matter.
+ + path = dir + name
+ + Need to document compression logic w.r.t. gz in, gz out
+ 
+Logging: 
+ + gem install 'logging'
+ + AppLogger is a singleton logging class. One instance per application/tool.
+
+
+ 
+
+
+
+
+
+
+
 
