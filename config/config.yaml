@@ -1,9 +1,9 @@
 json2csv:
   activity_template: ./templates/tweet_ids.json
-  dir_input: ./inbox
-  dir_output: ./outbox
+  inbox: ./inbox
+  outbox: ./outbox
   save_json: true
-  dir_processed: ./input/processed
+  processed_box: ./input/processed #Saved JSON gets moved here.
   compress_csv: false #TODO: conventions? retain compression?
 
   arrays_to_collapse: hashtags,user_mentions,twitter_entities.urls,gnip.urls,matching_rules,topics
