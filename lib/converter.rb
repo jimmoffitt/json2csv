@@ -104,7 +104,7 @@ class Converter
   #  ]
   # }
   #}
-  #hash --> hash --> array --> array --> array #WHICH SEEMS WRONG, but that is what we get!
+  #hash --> hash --> array --> array --> array #WHICH SEEMS WRONG, but that is what we get...
   #location.geo.coordinates.0.0.0
   #location.geo.coordinates.0.1.1
   #location.geo.coordinates.1.0.0

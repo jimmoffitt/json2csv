@@ -21,7 +21,7 @@ class AppConfig
     def initialize
         #Defaults.
         @activity_template = './templates/tweet_standard.json'
-        @config_path = './config' #Default to app config directory.
+        @config_path = './config/' #Default to app config directory.
         @config_name = 'config.yaml'
 
         @inbox = './input'
