@@ -1,0 +1,157 @@
+{
+  "id": "tag:search.twitter.com,2005:399056944784080896",
+  "actor": {
+    "id": "id:twitter.com:362790884",
+    "displayName": "whoRetweetedThis",
+    "postedTime": "2011-08-27T00:23:38.000Z",
+    "summary": "I love to retweet and live Colorado",
+    "friendsCount": 702,
+    "followersCount": 900,
+    "listedCount": 0,
+    "statusesCount": 16000,
+    "utcOffset": "-25200",
+    "twitterTimeZone": "Mountain Time (US & Canada)",
+    "verified": false,
+    "preferredUsername": "whoRetweetedThis",
+    "languages": [
+      "en"
+    ],
+    "location": {
+      "objectType": "place",
+      "displayName": "Boulder Colorado"
+    },
+    "favoritesCount": 1414
+  },
+  "verb": "share",
+  "postedTime": "2013-11-09T06:12:44.000Z",
+  "generator": {
+    "displayName": "Twitter for iPad",
+    "link": "http:\/\/twitter.com\/#!\/download\/ipad"
+  },
+  "provider": {
+    "objectType": "service",
+    "displayName": "Twitter",
+    "link": "http:\/\/www.twitter.com"
+  },
+  "link": "http:\/\/twitter.com\/icylylicious08\/statuses\/399056944784080896",
+  "body": "RT @originalAuthor: my original post",
+  "object": {
+    "id": "tag:search.twitter.com,2005:399056824369815552",
+    "actor": {
+      "id": "id:twitter.com:1306169648",
+      "preferredUsername": "originalAuthor"
+    },
+    "postedTime": "2013-11-09T06:12:15.000Z",
+    "body": "my original post"
+  },
+  "favoritesCount": 0,
+  "location": {
+    "objectType": "place",
+    "displayName": "Littleton, CO",
+    "name": "Littleton",
+    "country_code": "United States",
+    "twitter_country_code": "US",
+    "link": "https:\/\/api.twitter.com\/1.1\/geo\/id\/910868722e1e4825.json",
+    "geo": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -105.062023,
+            39.565332
+          ],
+          [
+            -105.062023,
+            39.62983
+          ],
+          [
+            -104.973551,
+            39.62983
+          ],
+          [
+            -104.973551,
+            39.565332
+          ]
+        ]
+      ]
+    }
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      39.62319962,
+      -105.01208369
+    ]
+  },
+  "twitter_entities": {
+    "hashtags": [
+      {
+        "text": "thisOne"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https: \/\/t.co\/UpVhmiFDAv",
+        "expanded_url": "https: \/\/github.com\/jimmoffitt\/pt-dm\/blob\/master\/ReadMe.md"
+      }
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "StJulienHotel",
+        "name": "StJulienHotel",
+        "id": 78946410
+      }
+    ],
+    "media": [
+      {
+        "id": 4.4675670928171e+17,
+        "media_url": "http: \/\/pbs.twimg.com\/media\/BjMy3C3CMAA3gTR.jpg",
+        "url": "http: \/\/t.co\/JgyGsCKWTK",
+        "display_url": "pic.twitter.com\/JgyGsCKWTK",
+        "expanded_url": "http: \/\/twitter.com\/StJulienHotel\/status\/446756709273317376\/photo\/1",
+        "type": "photo"
+      }
+    ]
+  },
+  "twitter_filter_level": "medium",
+  "twitter_lang": "en",
+  "retweetCount": 1,
+  "gnip": {
+    "matching_rules": [
+      {
+        "value": "is: retweetprofile_country_code: ph",
+        "tag": null
+      }
+    ],
+    "urls": [
+      {
+        "url": "https: \/\/t.co\/UpVhmiFDAv",
+        "expanded_url": "https: \/\/github.com\/jimmoffitt\/pt-dm\/blob\/master\/ReadMe.md"
+      }
+    ],
+    "language": {
+      "value": "en"
+    },
+    "klout_score": 43,
+    "profileLocations": [
+      {
+        "objectType": "place",
+        "geo": {
+          "type": "point",
+          "coordinates": [
+            -105.10193,
+            40.16721
+          ]
+        },
+        "address": {
+          "country": "United States",
+          "countryCode": "US",
+          "locality": "Longmont",
+          "region": "Colorado",
+          "subRegion": "BoulderCounty"
+        },
+        "displayName": "Longmont, Colorado, United States"
+      }
+    ]
+  }
+}
