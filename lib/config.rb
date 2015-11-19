@@ -8,10 +8,10 @@ class AppConfig
     attr_accessor :config_name, :config_path,
         #app/script configuration.
         :activity_template,  #Template for conversion process.
-        :dir_input,
-        :dir_output,
+        :inbox,
+        :outbox,
         :save_json,
-        :dir_processed,
+        :processed_box,
         :compress_csv,
     
         :arrays_to_collapse,
@@ -24,10 +24,10 @@ class AppConfig
         @config_path = './config' #Default to app config directory.
         @config_name = 'config.yaml'
 
-        @dir_input = './input'
-        @dir_output = './output'
+        @inbox = './input'
+        @outbox = './output'
         @save_json = true
-        @dir_processed = './input/processed'
+        @processed_box = './input/processed'
         @retain_compression = true #TODO: gz in, gz out if true
         
         #These need to be unique, thus 'urls' require their parent object name.
@@ -101,10 +101,10 @@ class AppConfig
         settings = {}
         #Downloading, compression.
         settings['activity_template'] = @activity_template
-        settings['dir_input'] = @dir_input
-        settings['dir_output'] = @dir_output
+        settings['dir_input'] = @inbox
+        settings['dir_output'] = @outbox
         settings['save_json'] = @save_json
-        settings['dir_processed'] = @dir_processed
+        settings['dir_processed'] = @processed_box
 
         settings['compress_csv'] = @compress_csv
                
@@ -133,10 +133,10 @@ class AppConfig
         end
 
         @activity_template = config['json2csv']['activity_template']
-        @dir_input = check_directory(config['json2csv']['dir_input'])
-        @dir_output = check_directory(config['json2csv']['dir_output'])
+        @inbox = check_directory(config['json2csv']['inbox'])
+        @outbox = check_directory(config['json2csv']['outbox'])
         @save_json = config['json2csv']['save_json']
-        @dir_processed = check_directory(config['json2csv']['dir_processed'])
+        @processed_box = check_directory(config['json2csv']['processed_box'])
         @compress_csv = config['json2csv']['compress_csv']
        
         temp = config['json2csv']['arrays_to_collapse']

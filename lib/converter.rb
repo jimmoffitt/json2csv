@@ -231,42 +231,42 @@ class Converter
 
     keys.each { |key|
       begin
-        if @config.header_mappings.any? { |k| k.include? key } then
+        if @config.header_mappings.any? { |k| k.include? key }
 
           header_label = key
 
           @config.header_mappings.each { |k, v|
-            if header_label.include? k then
+            if header_label.include? k
               header_label.gsub!(k, v)
             end
 
           }
           names << header_label
 
-        elsif @config.header_overrides.split(',').include?(key) then
+        elsif @config.header_overrides.split(',').include?(key)
           names << key
-        elsif key.include?('coordinates') then
+        elsif key.include?('coordinates')
           names << key
-        elsif key.split('.')[-1].is_i? then
+        elsif key.split('.')[-1].is_i?
           names << key
         else
           #We want to grab the last element and add it to the array.
           name = key.split(".")[-1]
 
-          if !names.include?(name) then
+          if !names.include?(name)
             names << name
           else
-            if key.split(".")[-2].is_i? then
+            if key.split(".")[-2].is_i?
               name = key.split(".")[-3..-1].join(".")
             else
               name = key.split(".")[-2..-1].join(".")
             end
 
-            if !names.include?(name) then
+            if !names.include?(name)
               names << name
             else
               name = key.split(".")[-3..-1].join(".")
-              if !names.include?(name) then
+              if !names.include?(name)
                 names << name
               else
                 p 'Need to go deeper?'
@@ -296,7 +296,7 @@ class Converter
 
       #p key
 
-      if key.to_f < 0 then
+      if key.to_f < 0
         AppLogger.log.error("ERROR with negative key #{key}")
       end
 
@@ -309,7 +309,7 @@ class Converter
     }
 
     begin
-      if key.split(".")[-1] == "id" then
+      if key.split(".")[-1] == "id"
         lookup = lookup.split(":")[-1]
       end
     rescue
@@ -319,7 +319,7 @@ class Converter
     #Remove newline characters on the way out.
     #TODO: gsub errors with numerics.
     begin
-      if lookup.is_a? String and !lookup.nil? then
+      if lookup.is_a? String and !lookup.nil?
         lookup.gsub!(/\n/, "")
       end
     rescue Exception => e
@@ -364,11 +364,11 @@ class Converter
 
     parts = key.split(/\d+/)
 
-    if parts.length == 2 then
+    if parts.length == 2
       data_pointers = parts[0]
       data_members = parts[1]
     elsif
-    AppLogger.log.warn("WARN: in get_collapsed_array_data method, unexpected length of data member... may need special logic")
+      AppLogger.log.warn("WARN: in get_collapsed_array_data method, unexpected length of data member... may need special logic")
     end
 
     #Split data members' dot-notation to gets keys to traverse.
@@ -384,17 +384,17 @@ class Converter
     #Examine data members, this should be a single entity.
     data_member = data_members.split('.')
 
-    if data_member.length == 2 then
+    if data_member.length == 2
       data_member = data_member[-1].to_s
     elsif
-    AppLogger.log.warn("WARN: in get_collapsed_array_data method, unexpected length of data member... may need special logic")
+      AppLogger.log.warn("WARN: in get_collapsed_array_data method, unexpected length of data member... may need special logic")
     end
 
     data = ""
 
     target_data.each { |item|
 
-      if !item[data_member].nil? then
+      if !item[data_member].nil?
         data = data + item[data_member].to_s + ','
       else
         data = data + ','
@@ -427,12 +427,12 @@ class Converter
 
     #tour output folder with current UUID and convert files
 
-    Dir.glob("#{@config.dir_input}/*.json") do |file|
+    Dir.glob("#{@config.inbox}/*.json") do |file|
 
       AppLogger.log.debug("DEBUG, convert_files: Converting #{File.basename(file)} file...")
 
 
-      csv_filename = "#{@config.dir_output}/#{File.basename(file, ".*")}.csv"
+      csv_filename = "#{@config.outbox}/#{File.basename(file, ".*")}.csv"
       csv_file = File.open(csv_filename, "w")
       csv_file.puts header
 
@@ -447,7 +447,7 @@ class Converter
       #  HPT: last line is a "info" footer.
       #  Realtime: contents start with '{"id":'.  ##Not handling this yet....
 
-      if (contents.start_with?('{"results":[') or contents.start_with?('{"next":')) then
+      if (contents.start_with?('{"results":[') or contents.start_with?('{"next":'))
 
         json_contents = JSON.parse(contents)
 
@@ -459,7 +459,7 @@ class Converter
 
         contents.split("\n")[0..-2].each { |line| #drop last "info" member.
           #Dev TODO: just added the "id": match, untested
-          if line.include?('"id":"') then
+          if line.include?('"id":"')
             activities << line
           end
         }
@@ -485,11 +485,11 @@ class Converter
 
         keys_template.each { |key_template|
 
-          if keys_activity.include?(key_template) then
+          if keys_activity.include?(key_template)
 
             #p "matched on #{key_template}"
 
-            if @config.arrays_to_collapse.split(',').any? { |item| key_template.include?(item) } then
+            if @config.arrays_to_collapse.split(',').any? { |item| key_template.include?(item) }
               #p "NEED TO HANDLE SPECIAL CASE: #{key_template}"
               data = get_collapsed_array_data(activity_hash, key_template)
             else
@@ -514,22 +514,15 @@ class Converter
       csv_file.close #Close new CSV file.
 
 
-      if (!@config.save_json) then
+      if (!@config.save_json)
         File.delete(file) #Delete json version.
       else #Move it to 'processed' folder.
-        FileUtils.mv(file, "#{@config.dir_processed}/#{file.split('/')[-1]}")
+        FileUtils.mv(file, "#{@config.processed_box}/#{file.split('/')[-1]}")
       end
     end
 
     AppLogger.log.info("Finished JSON to CSV conversion. Conversion required #{Time.now - start_time} seconds.")
 
-  end
-
-  def get_logger(config_file=nil)
-    logging = AppLogging.new
-    logging.get_config(config_file)
-    @logger = logging.get_logger
-    logging.name = 'json2csv.log'
   end
 
 end
