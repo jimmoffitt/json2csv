@@ -118,21 +118,22 @@ It can be difficult and time-consuming to find just the perfect tweet 'in the wi
 
 Here are several pre-built examples:
 
-+ ['Tweet IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_ids.json): For selecting just the numeric Tweet IDs.
-+ + ['User IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/schema/user_ids.json):For selecting just the numeric User IDs.
-+ ['Small' Tweet Template](https://github.com/jimmoffittjson2csv/blob/master/schema/tweet_small.json): For just selecting the basics.
-+ ['Everything' Retweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_everything.json): Includes complete data, including the full Retweet and nested Tweet. Includes all Twitter entities and all attributes (like hashtag indices), Twitter geo metadata, and all Gnip enrichments.
-+ ['Standard' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json): Handles both original Tweets and Retweets. No Twitter geo metadata, all twitter entities included with select attributes (i.e., no hashtag indices), includes standard Gnip enrichments (matching rules, urls, language). Retweets are indicated by verb, original tweet id, and author name/id.
-+ ['Standard + Geo' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard_geo.json): Same as the 'Standard' template, but also includes Twitter geo metadata.
-+ ['Profile Geo' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_profile_geo.json): Same as 'Standard Geo' Template, with the addition of the Profile Geo enrichment.
-+ ['All gnip enrichments' Tweet Template](https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_all_enrichments.json): Same as 'Profile Geo' Template, with the addition of Klout Topics data.
++ ['Standard' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_standard.json) (tweet_standard.json): Handles both original Tweets and Retweets. No Twitter geo metadata, all twitter entities included with select attributes (i.e., no hashtag indices), includes standard Gnip enrichments (matching rules, urls, language). Retweets are indicated by verb, original tweet id, and author name/id.
++ ['Tweet IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_ids.json) (tweet_ids.json): For selecting just the numeric Tweet IDs.
++ ['User IDs' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/user_ids.json) (user_ids.json): For selecting just the numeric User IDs.
++ ['Small' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_small.json) (tweet_small.json): For selecting just the basics.
++ ['Everything' Retweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_everything.json) (tweet_everything.json): Includes complete data, including the full Retweet and nested Tweet. Includes all Twitter entities and all attributes (like hashtag indices), Twitter geo metadata, and all Gnip enrichments.
++ ['Standard + Geo' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_standard_geo.json) (tweet_standard_geo.json): Same as the 'Standard' template, but also includes Twitter geo metadata.
++ ['Profile Geo' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_profile_geo.json) (tweet_profile_geo.json): Same as 'Standard Geo' Template, with the addition of the Profile Geo enrichment.
++ ['All gnip enrichments' Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_all_enrichments.json) (tweet_all_enrichments.json): Same as 'Profile Geo' Template, with the addition of Klout Topics data.
 
 #### Use-case Examples
-
++ Coverting JSON to CSV for importing into spreadsheets, relational databases, and legacy systems.
+ + [tweet_ids.json](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_standard.json) is a good place to start.
 + Extract only Tweet IDs for input into an Engagement API client.
+ + [tweet_ids.json](https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_ids.json)
 + Extract only User IDs for input into an Engagement API client.
-
-
+ +  [user_ids.json](https://github.com/jimmoffitt/json2csv/blob/master/templates/user_ids.json)
 
 ### Details, Details, Details
 
@@ -201,13 +202,14 @@ It depends on how many files are being processed, how many tweets are being conv
 
 Using a [standard template tweet] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json) approximately 5 million tweets can be processed per hour. Massive datasets can take hours to process. I wonder how fast it would run if written in Python...
 
-##### Some coding details...
+##### Some coding conventions/details...
 
 File handling:
  + name
  + dir, whether it ends with a separator should not matter.
  + path = dir + name
  + Need to document compression logic w.r.t. gz in, gz out
+ + Configured directories should be created if needed.
  
 Logging: 
  + gem install 'logging'
