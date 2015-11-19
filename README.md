@@ -1,5 +1,7 @@
 # json2csv
 
+### JSON to CSV is a one-way street...
+
 ### Overview
 
 The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. Tweet attributes of interest are indicated by referencing a Tweet Template of choice. If the Tweet Template has an attribute it will be written to the output CSV files. If the Template does not have the attribute, it is dropped and not written. You can design your own Tweet Template, or use one of the provided example Templates.
@@ -39,8 +41,6 @@ Before deciding to perform this type of conversion, you should consider the foll
 #### Configuring json2csv
 
 This tool defaults to ./config/config.yaml for its configuration/settings file. Below are all of the default settings. If the configured directories do not exist they will be automatically created.
-
-+ TODO: document header_mappings: {} and give non-nil example.
 
 ```
 json2csv:
@@ -113,7 +113,10 @@ It can be difficult and time-consuming to find just the perfect tweet 'in the wi
 + Order of objects does not absolutely matter.  You could have the actor object below the twitter entities object. However, the order will affect the order of the CSV columns in the output.
 + Array attributes only need an array length of one. The conversion process knows to export all array elements it finds.
 + Hierarchy matters. If you skip or add a level in the template, that 'pattern' will not be found in the processed tweets. For example:
-  <pre>gnip.matching_rules.0.value != gnip.matching_rules.value</pre>
+ ```
+  gnip.matching_rules.0.value != gnip.matching_rules.value
+ ```
+ The matching_rules attribute is an array so ```gnip.matching_rules.0.value``` will match, while ```gnip.matching_rules.value``` will not.
 + Metadata values do not have to be internally consistent since the values of the JSON name/value pairs does not matter. All that matters are the JSON names. With the template tweet examples below you will see inconsistencies. For example the geographic metadata can be inconsistent with an actor location in one place and the Gnip Profile Geo in another.
 
 Here are several pre-built examples:
