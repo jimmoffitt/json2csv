@@ -6,10 +6,8 @@
 
 The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. Tweet attributes of interest are indicated by referencing a Tweet Template of choice. If the Tweet Template has an attribute it will be written to the output CSV files. If the Template does not have the attribute, it is dropped and not written. You can design your own Tweet Template, or use one of the provided example Templates.
 
-+ Works with an input folder and attempts to convert all *.json and *.json.gz file it finds there, writing the 
-resulting CSV files to an output folder. 
-+ Works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to convert JSON tweets in bulk. 
-+ Retains JSON filename, e.g. MyTweets.json --> MyTweets.csv
+This tool pulls JSON Tweets from an input folder and attempts to convert all *.json and *.json.gz files it finds there, writing the 
+resulting CSV files to an output folder. This tool works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to convert JSON tweets in bulk, and retains the JSON filename, e.g. MyTweets.json --> MyTweets.csv.
  
 The json2csv tool is configured with a single [YAML](http://yaml.org/) file and provides basic logging. This tool is written in Ruby and references a few basic gems (json, csv, and logging). 
 
@@ -24,7 +22,7 @@ Before deciding to perform this type of conversion, you should consider the foll
 ##### Some things this tool does not do
 
 + May not support 'original' Tweet format. (The Converter Class knows about JSON, CSV, Hashes, and Arrays, but shouldn't care whether it is 'original' or 'Activity Stream' format.  Configured 'attribute' mappings depend on the format, but hopefully the conversion code does not. 
-+ This tool does not consolidate files or compile data. See [consolidator project] for that functionality.
++ This tool does not consolidate files or compile data. See [consolidator project] for the ability to consolidate 10-minute Historical PowerTrack files into hourly or daily files, or 500-Tweet Search response files into larger files.
 
 ### Getting Started
 
@@ -34,7 +32,7 @@ Before deciding to perform this type of conversion, you should consider the foll
 + bundle install.
 + Select a Tweet Template.
 + Configure the config.yaml. Its defaults provide a place to start.
-+ Place Tweet JSON files to convert in the app's inbox.
++ Place Tweet JSON files to convert in the app's inbox. This project includes an 'inbox' of Tweets. These Tweets were posted by the Gnip Twitter account during October 2015.
 + Run $ruby json2csv.rb 
 + Look for CSV files in the app's outbox.
 
