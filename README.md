@@ -11,7 +11,7 @@ resulting CSV files to an output folder. This tool works with Activity Stream Tw
  
 The json2csv tool is configured with a single [YAML](http://yaml.org/) file and provides basic logging. This tool is written in Ruby and references a few basic gems (json, csv, and logging). 
 
-One of the first steps is to 'design' (or choose from our examples) a [Tweet Template](#tweet-templates) which identifies all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
+One of the first steps is to 'design' (or choose from our examples) a [Tweet Template](#tweet-templates) which identifies all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a Tweet message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
 
 Before deciding to perform this type of conversion, you should consider the following trade-offs:
 
@@ -66,9 +66,9 @@ logging:
 
 #### Tweet Templates<a id="tweet-templates" class="tall">&nbsp;</a>
 
-A Tweet Template is an example Tweet payload in JSON that contains all the fields you want to export to the CSV files. Social activities, such as Tweets, are dynamic in nature and the payloads from one tweet to another are sure to be different. One could be a geo-tagged tweet with several hashtags and mentions, while the next one is a Retweet with an URL.
+A Tweet Template is an example Tweet payload in JSON that contains all the fields you want to export to the CSV files. Social activities, such as Tweets, are dynamic in nature and the payloads from one Tweet to another are sure to be different. One could be a geo-tagged Tweet with several hashtags and mentions, while the next one is a Retweet with an URL.
 
-This example tweet is referred to as the conversion 'Tweet Template.' The conversion process loads this template and then tours each of your historical Tweets and exports all metadata that is specified in the template. Here is a short example template that would export the bare minimum of metadata:
+This example Tweet is referred to as the conversion 'Tweet Template.' The conversion process loads this template and then tours each of your historical Tweets and exports all metadata that is specified in the template. Here is a short example template that would export the bare minimum of metadata:
 
 <pre>
 {
@@ -79,7 +79,7 @@ This example tweet is referred to as the conversion 'Tweet Template.' The conver
   },
   "verb": "post",
   "postedTime": "2013-12-31T21:26:10.000Z",
-  "body": "Example tweet #HashTag1 #HashTag2"
+  "body": "Example Tweet #HashTag1 #HashTag2"
    "twitter_entities": {
     "hashtags": [
       {"text": "HashTag1"},
@@ -92,7 +92,7 @@ This would be represented in a CSV file as:
 
 <pre>
 id,actor.id,preferredUsername,verb,postedTime,body,hashtags
-418130988250570752,17200003,jimmoffitt,post,2013-12-31T21:26:10.000Z,Example tweet #HashTag1 #HashTag2,"HashTag1,HashTag2"
+418130988250570752,17200003,jimmoffitt,post,2013-12-31T21:26:10.000Z,Example Tweet #HashTag1 #HashTag2,"HashTag1,HashTag2"
 </pre>
 
 A couple things to note about this JSON to CSV conversion:
