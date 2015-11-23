@@ -1,0 +1,54 @@
+{
+  "id": "tag:search.twitter.com,2005:399056944784080896",
+  "actor": {
+    "id": "id:twitter.com:362790884",
+    "summary": "I love to retweet and live Colorado",
+    "twitterTimeZone": "Mountain Time (US & Canada)",
+    "preferredUsername": "whoRetweetedThis",
+    "languages": [
+      "en"
+    ],
+    "location": {
+      "objectType": "place",
+      "displayName": "Boulder Colorado"
+    }
+  },
+  "verb": "share",
+  "postedTime": "2013-11-09T06:12:44.000Z",
+  "body": "RT @originalAuthor: my original post #thisOne",
+  "object": {
+    "id": "tag:search.twitter.com,2005:399056824369815552",
+    "body": "my original post"
+  },
+  "twitter_entities": {
+    "hashtags": [
+      {
+        "text": "thisOne"
+      }
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "originalAuthor"
+      }
+    ],
+    "media": [
+      {
+        "expanded_url": "http: \/\/twitter.com\/originalAuthor\/status\/446756709273317376\/photo\/1",
+        "type": "photo"
+      }
+    ]
+  },
+  "twitter_lang": "en",
+  "gnip": {
+    "matching_rules": [
+      {
+        "value": "has:media is:retweet original"
+      }
+    ],
+    "urls": [
+      {
+        "expanded_url": "https: \/\/github.com\/jimmoffitt\/pt-dm\/blob\/master\/ReadMe.md"
+      }
+    ]
+  }
+}
