@@ -2,7 +2,7 @@
 
 ##### JSON to CSV is a one-way street...
 
-### Overview
+### Introduction
 
 The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. 
 Tweet attributes of interest are indicated by referencing a Tweet Template of choice. If the Tweet Template has an 
@@ -48,12 +48,12 @@ convert metadata you did not include the first time.
 #### Installing tool
 
 + Clone respository.
-+ bundle install.
-+ Select a Tweet Template.
++ bundle install. See project Gem file. Need logging and json gems... 
++ Select a [Tweet Template](https://github.com/jimmoffitt/json2csv/blob/master/README.md#tweet-templates).
 + Configure the config.yaml. Its defaults provide a place to start.
-+ Place Tweet JSON files to convert in the app's inbox. This project includes an 'inbox' of Tweets. These Tweets were posted by the Gnip Twitter account during October 2015.
++ Place Tweet JSON files to convert in the app's inbox. To help you get started this project includes an 'inbox' of Tweets. These Tweets were posted by [@gnip](https://twitter.com/Gnip) account during October 2015.
 + Run $ruby json2csv.rb 
-+ Look for CSV files in the app's outbox.
++ Look for CSV files in the app's outbox. Open them in a spreadsheet or import into a relational database... 
 
 #### Configuring json2csv
 
