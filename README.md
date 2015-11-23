@@ -14,7 +14,7 @@ resulting CSV files to an output folder.
 + Works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. 
 This tool was designed to convert JSON tweets in bulk. 
 + Retains JSON filename, e.g. MyTweets.json --> MyTweets.csv
-=======
+
 This tool pulls JSON Tweets from an input folder and attempts to convert all *.json and *.json.gz files it finds there, writing the 
 resulting CSV files to an output folder. This tool works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to convert JSON Tweets in bulk, and retains the JSON filename, e.g. MyTweets.json --> MyTweets.csv.
 
@@ -40,15 +40,8 @@ convert metadata you did not include the first time.
 
 ##### Some things this tool does not do
 
-<<<<<<< HEAD
-+ May not support 'original' Tweet format. (The Converter Class knows about JSON, CSV, Hashes, and Arrays, but shouldn't 
-care whether it is 'original' or 'Activity Stream' format.  Configured 'attribute' mappings depend on the format, but 
-hopefully the conversion code does not. 
-+ This tool does not consolidate files or compile data. See [consolidator project] for that functionality.
-=======
 + May not support 'original' Tweet format. (The Converter Class knows about JSON, CSV, Hashes, and Arrays, but shouldn't care whether it is 'original' or 'Activity Stream' format.  Configured 'attribute' mappings depend on the format, but hopefully the conversion code does not. 
 + This tool does not consolidate files or compile data. See [consolidator project] for the ability to consolidate 10-minute Historical PowerTrack files into hourly or daily files, or 500-Tweet Search response files into larger files.
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
 
 ### Getting Started
 
