@@ -9,7 +9,6 @@ Tweet attributes of interest are indicated by referencing a Tweet Template of ch
 attribute it will be written to the output CSV files. If the Template does not have the attribute, it is dropped and not 
 written. You can design your own Tweet Template, or use one of the provided example Templates.
 
-<<<<<<< HEAD
 + Works with an input folder and attempts to convert all *.json and *.json.gz file it finds there, writing the 
 resulting CSV files to an output folder. 
 + Works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. 
@@ -18,20 +17,15 @@ This tool was designed to convert JSON tweets in bulk.
 =======
 This tool pulls JSON Tweets from an input folder and attempts to convert all *.json and *.json.gz files it finds there, writing the 
 resulting CSV files to an output folder. This tool works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. This tool was designed to convert JSON Tweets in bulk, and retains the JSON filename, e.g. MyTweets.json --> MyTweets.csv.
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
- 
+
 The json2csv tool is configured with a single [YAML](http://yaml.org/) file and provides basic logging. This tool is 
 written in Ruby and references a few basic gems (json, csv, and logging). 
 
-<<<<<<< HEAD
 One of the first steps is to 'design' (or choose from our examples) a [Tweet Template](#tweet-templates) which identifies 
 all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file 
 with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you 
 want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a tweet 
 message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
-=======
-One of the first steps is to 'design' (or choose from our examples) a [Tweet Template](#tweet-templates) which identifies all the Tweet attributes that you are interested in. The conversion process uses this template and creates a CSV file with a column for every attribute in the template. The conversion process represents an opportunity to 'tune' what you want to export. For example, the standard Twitter metadata includes the numeric character position of hashtags in a Tweet message. You may decide that you do not need this information, and therefore can omit those details from your Tweet template.
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
 
 Before deciding to perform this type of conversion, you should consider the following trade-offs:
 
@@ -99,7 +93,6 @@ logging:
 
 #### Tweet Templates<a id="tweet-templates" class="tall">&nbsp;</a>
 
-<<<<<<< HEAD
 A Tweet Template is an example tweet payload in JSON that contains all the fields you want to export to the CSV files. 
 Social activities, such as tweets, are dynamic in nature and the payloads from one tweet to another are sure to be different. 
 One could be a geo-tagged tweet with several hashtags and mentions, while the next one is a retweet with an URL.
@@ -107,11 +100,6 @@ One could be a geo-tagged tweet with several hashtags and mentions, while the ne
 This example tweet is referred to as the conversion 'tweet template.' The conversion process loads this template and then 
 tours each of your historical tweets and exports all metadata that is specified in the template. Here is a short example 
 template that would export the bare minimum of metadata:
-=======
-A Tweet Template is an example Tweet payload in JSON that contains all the fields you want to export to the CSV files. Social activities, such as Tweets, are dynamic in nature and the payloads from one Tweet to another are sure to be different. One could be a geo-tagged Tweet with several hashtags and mentions, while the next one is a Retweet with an URL.
-
-This example Tweet is referred to as the conversion 'Tweet Template.' The conversion process loads this template and then tours each of your historical Tweets and exports all metadata that is specified in the template. Here is a short example template that would export the bare minimum of metadata:
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
 
 <pre>
 {
@@ -148,29 +136,6 @@ A couple things to note about this JSON to CSV conversion:
 
 #### Example Tweet Templates
 
-<<<<<<< HEAD
-It can be difficult and time-consuming to find just the perfect tweet 'in the wild', an actual tweet that encapsulates 
-all metadata you care about. So you may need to 'hand build' your own template tweet. The means assembling an JSON object 
-by picking and choosing the fields you want and copying them into a JSON file. When doing this, keep the following 
-details in mind:
-
-+ Tweet template JSON must be valid for the conversion code to work. If the conversion code can not parse the template 
-JSON then it will exit. There are many on-line validators to confirm your JSON is formatted correctly.
-+ Order of objects does not absolutely matter.  You could have the actor object below the twitter entities object. However, 
-the order will affect the order of the CSV columns in the output.
-+ Array attributes only need an array length of one. The conversion process knows to export all array elements it finds.
-+ Hierarchy matters. If you skip or add a level in the template, that 'pattern' will not be found in the processed tweets. 
-For example:
-
- ```
-  gnip.matching_rules.0.value != gnip.matching_rules.value
- ```
- The matching_rules attribute is an array so ```gnip.matching_rules.0.value``` will match, while ```gnip.matching_rules.value``` 
- will not.
-+ Metadata values do not have to be internally consistent since the values of the JSON name/value pairs does not matter. 
-All that matters are the JSON names. With the template tweet examples below you will see inconsistencies. For example the 
-geographic metadata can be inconsistent with an actor location in one place and the Gnip Profile Geo in another.
-=======
 It can be difficult and time-consuming to find just the perfect Tweet 'in the wild', an actual Tweet that encapsulates all metadata you care about. So you may need to 'hand build' your own template Tweet. The means assembling an JSON object by picking and choosing the fields you want and copying them into a JSON file. When doing this, keep the following details in mind:
 
 + Tweet template JSON must be valid for the conversion code to work. If the conversion code can not parse the template JSON then it will exit. There are many on-line validators to confirm your JSON is formatted correctly.
@@ -182,7 +147,6 @@ It can be difficult and time-consuming to find just the perfect Tweet 'in the wi
  ```
  The matching_rules attribute is an array so ```gnip.matching_rules.0.value``` will match, while ```gnip.matching_rules.value``` will not.
 + Metadata values do not have to be internally consistent since the values of the JSON name/value pairs does not matter. All that matters are the JSON names. With the template Tweet examples below you will see inconsistencies. For example the geographic metadata can be inconsistent with an actor location in one place and the Gnip Profile Geo in another.
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
 
 Here are several pre-built examples:
 
@@ -205,7 +169,6 @@ Here are several pre-built examples:
 
 ### Details, Details, Details
 
-<<<<<<< HEAD
 ##### Is there any special parsing of JSON values?
 Yes, Tweet and Actor IDs are handled specially. For these IDs, the string component is stripped off and only the numeric 
 part is retained:
@@ -215,8 +178,6 @@ id, actor.id
 418130988250570752,17200003
 </pre>
 
-=======
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
 ##### How are CSV column names determined?
 
 CSV column names are generated by referencing the JSON object names and using dot notation to indicate levels and arrays 
@@ -344,20 +305,10 @@ id,actor.id,hashtags
 418130988250570752,17200003,"HashTag1,HashTag2"
 </pre>
 
-##### How long will the conversion process take?
-<<<<<<< HEAD
-It depends on how many files are being processed, how many tweets are being converted, and how many attributes are included 
-in the template tweet. If there are 10 million tweets, and 200 tweet attributes in the template, there are 2 billion 
-attributes to process.
 
-Using a [standard template tweet] (https://github.com/jimmoffitt/pt-dm/blob/master/schema/tweet_standard.json) 
-approximately 5 million tweets can be processed per hour. Massive datasets can take hours to process. I wonder how fast 
-it would run if written in Python...
-=======
 It depends on how many files are being processed, how many Tweets are being converted, and how many attributes are included in the template Tweet. If there are 10 million Tweets, and 200 Tweet attributes in the template, there are 2 billion attributes to process.
 
 Using a [standard Tweet template] (https://github.com/jimmoffitt/json2csv/blob/master/templates/tweet_standard.json) approximately 5 million Tweets can be processed per hour. Massive datasets can take hours to process. I wonder how fast it would run if written in Python...
->>>>>>> 94b5e7f617979e33ae94dc1c7e4ab0c3be4e45fd
 
 ##### Some coding conventions/details...
 
