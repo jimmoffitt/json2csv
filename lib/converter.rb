@@ -1,5 +1,5 @@
 require_relative '../common/app_logger'
-include AppLogger
+#include AppLogger
 
 class String
   def is_i?
@@ -463,6 +463,15 @@ class Converter
             activities << line
           end
         }
+		 
+	  else
+
+		 contents.split("\n").each { |line| #drop last "info" member.
+			#Dev TODO: just added the "id": match, untested
+			if line.include?('retweetCount') or line.include?('retweet_count')
+			   activities << line
+			end
+		 }
 
       end
 
