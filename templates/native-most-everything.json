@@ -1,0 +1,306 @@
+{
+  "created_at": "Sun Sep 24 23:58:20 +0000 2017",
+  "id": 9.1210394103014e+17,
+  "id_str": "912103941030141952",
+  "text": "news that warms my heart https:\/\/t.co\/HhnVdflF7k",
+  "display_text_range": [
+    0,
+    24
+  ],
+  "source": "<a href=\"http:\/\/twitter.com\" rel=\"nofollow\">Twitter Web Client<\/a>",
+  "truncated": false,
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 9.069484600787e+17,
+    "id_str": "906948460078698496",
+    "name": "SnowBot",
+    "screen_name": "SnowBotDev",
+    "location": "USA",
+    "url": null,
+    "description": "Think snow. Home of the snowbot, a demo of the Twitter Account Activity and Direct Message APIs.",
+    "translator_type": "none",
+    "derived": {
+      "locations": [
+        {
+          "country": "United States",
+          "country_code": "US",
+          "full_name": "United States",
+          "geo": {
+            "coordinates": [
+              -98.5,
+              39.76
+            ],
+            "type": "point"
+          }
+        }
+      ]
+    },
+    "protected": false,
+    "verified": false,
+    "followers_count": 3,
+    "friends_count": 19,
+    "listed_count": 0,
+    "favourites_count": 2,
+    "statuses_count": 7,
+    "created_at": "Sun Sep 10 18:32:17 +0000 2017",
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": true,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "profile_background_color": "000000",
+    "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+    "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+    "profile_background_tile": false,
+    "profile_link_color": "91D2FA",
+    "profile_sidebar_border_color": "000000",
+    "profile_sidebar_fill_color": "000000",
+    "profile_text_color": "000000",
+    "profile_use_background_image": false,
+    "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/906950730342309888\/Hr-gS4Sq_normal.jpg",
+    "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/906950730342309888\/Hr-gS4Sq_normal.jpg",
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "quoted_status_id": 9.1174265846006e+17,
+  "quoted_status_id_str": "911742658460057600",
+  "quoted_status": {
+    "created_at": "Sun Sep 24 00:02:43 +0000 2017",
+    "id": 9.1174265846006e+17,
+    "id_str": "911742658460057600",
+    "text": "#Snow!!! Here's the scene from Peak 7! #Breck #CoWx https:\/\/t.co\/v0eNkbCYor",
+    "display_text_range": [
+      0,
+      51
+    ],
+    "source": "<a href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 19746495,
+      "id_str": "19746495",
+      "name": "Breckenridge Resort",
+      "screen_name": "breckenridgemtn",
+      "location": "Breckenridge, Colorado, USA",
+      "url": "http:\/\/bit.ly\/BreckHome",
+      "description": "Even if you've never been here, you'll feel like a local in our historic mountain town and on our great slopes. Check @breckconditions for alerts on terrain.",
+      "translator_type": "none",
+      "protected": false,
+      "verified": false,
+      "followers_count": 61212,
+      "friends_count": 2042,
+      "listed_count": 1315,
+      "favourites_count": 7333,
+      "statuses_count": 11752,
+      "created_at": "Fri Jan 30 01:02:06 +0000 2009",
+      "utc_offset": -21600,
+      "time_zone": "Mountain Time (US & Canada)",
+      "geo_enabled": true,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "profile_background_color": "1A1B1F",
+      "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/387760630\/BRK1647b_10.jpg",
+      "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/387760630\/BRK1647b_10.jpg",
+      "profile_background_tile": false,
+      "profile_link_color": "990B1E",
+      "profile_sidebar_border_color": "F0F0F0",
+      "profile_sidebar_fill_color": "E3E3E3",
+      "profile_text_color": "222222",
+      "profile_use_background_image": true,
+      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/497067158526914560\/PqODmcyE_normal.jpeg",
+      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/497067158526914560\/PqODmcyE_normal.jpeg",
+      "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/19746495\/1506284325",
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": null,
+      "follow_request_sent": null,
+      "notifications": null
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "quote_count": 0,
+    "reply_count": 8,
+    "retweet_count": 107,
+    "favorite_count": 322,
+    "entities": {
+      "hashtags": [
+        {
+          "text": "Snow",
+          "indices": [
+            0,
+            5
+          ]
+        },
+        {
+          "text": "Breck",
+          "indices": [
+            39,
+            45
+          ]
+        },
+        {
+          "text": "CoWx",
+          "indices": [
+            46,
+            51
+          ]
+        }
+      ],
+      "urls": [
+        
+      ],
+      "user_mentions": [
+        
+      ],
+      "symbols": [
+        
+      ],
+      "media": [
+        {
+          "id": 9.1174263328998e+17,
+          "id_str": "911742633289977860",
+          "indices": [
+            52,
+            75
+          ],
+          "media_url": "http:\/\/pbs.twimg.com\/media\/DKcpGCfUEAQ7vRf.jpg",
+          "media_url_https": "https:\/\/pbs.twimg.com\/media\/DKcpGCfUEAQ7vRf.jpg",
+          "url": "https:\/\/t.co\/v0eNkbCYor",
+          "display_url": "pic.twitter.com\/v0eNkbCYor",
+          "expanded_url": "https:\/\/twitter.com\/breckenridgemtn\/status\/911742658460057600\/photo\/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 1200,
+              "h": 900,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 680,
+              "h": 510,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 2048,
+              "h": 1536,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 9.1174263328998e+17,
+          "id_str": "911742633289977860",
+          "indices": [
+            52,
+            75
+          ],
+          "media_url": "http:\/\/pbs.twimg.com\/media\/DKcpGCfUEAQ7vRf.jpg",
+          "media_url_https": "https:\/\/pbs.twimg.com\/media\/DKcpGCfUEAQ7vRf.jpg",
+          "url": "https:\/\/t.co\/v0eNkbCYor",
+          "display_url": "pic.twitter.com\/v0eNkbCYor",
+          "expanded_url": "https:\/\/twitter.com\/breckenridgemtn\/status\/911742658460057600\/photo\/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 1200,
+              "h": 900,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 680,
+              "h": 510,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 2048,
+              "h": 1536,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "filter_level": "low",
+    "lang": "en"
+  },
+  "is_quote_status": true,
+  "quote_count": 0,
+  "reply_count": 0,
+  "retweet_count": 0,
+  "favorite_count": 0,
+  "entities": {
+    "hashtags": [
+      
+    ],
+    "urls": [
+      {
+        "url": "https:\/\/t.co\/HhnVdflF7k",
+        "expanded_url": "https:\/\/twitter.com\/breckenridgemtn\/status\/911742658460057600",
+        "display_url": "twitter.com\/breckenridgemt\u2026",
+        "unwound": {
+          "url": "https:\/\/twitter.com\/breckenridgemtn\/status\/911742658460057600",
+          "status": 200,
+          "title": "Breckenridge Resort on Twitter",
+          "description": "\u201c#Snow!!! Here's the scene from Peak 7! #Breck #CoWx\u201d"
+        },
+        "indices": [
+          25,
+          48
+        ]
+      }
+    ],
+    "user_mentions": [
+      
+    ],
+    "symbols": [
+      
+    ]
+  },
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "filter_level": "low",
+  "lang": "en",
+  "matching_rules": [
+    {
+      "tag": null
+    }
+  ]
+}
