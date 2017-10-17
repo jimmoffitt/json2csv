@@ -13,11 +13,7 @@
         "derived": {
             "locations": [
                 {
-                    "country_code": "US",
-                    "locality": "Boulder",
-                    "region": "Colorado",
-                    "sub_region": "Boulder County",
-                    "full_name": "Boulder, Colorado, United States"
+                     "full_name": "Boulder, Colorado, United States"
                 }
             ]
         },
@@ -37,7 +33,6 @@
         "id": "2736a5db074e8201",
         "url": "https:\/\/api.twitter.com\/1.1\/geo\/id\/2736a5db074e8201.json",
         "place_type": "city",
-        "name": "Longmont",
         "full_name": "Longmont, CO",
         "country_code": "US"
     },
@@ -68,8 +63,7 @@
         ],
         "user_mentions": [
             {
-                "screen_name": "NWS",
-                "id_str": "454313925"
+                "screen_name": "NWS"
             }
         ],
         "symbols": [
