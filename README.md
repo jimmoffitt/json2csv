@@ -4,14 +4,13 @@
 
 ### Introduction
 
-The 'json2csv' tool manages the conversion of Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. 
-Tweet attributes of interest are indicated by referencing a Tweet Template of choice. If the Tweet Template has an 
+The 'json2csv' tool manages the conversion of Twitter enriched native (EN) and Gnip Activity Stream (AS) JSON to the comma separated values (CSV) format. Tweet attributes of interest are indicated by referencing a Tweet Template of choice. If the Tweet Template has an 
 attribute it will be written to the output CSV files. If the Template does not have the attribute, it is dropped and not 
 written. You can design your own Tweet Template, or use one of the provided example Templates.
 
 + Works with an input folder and attempts to convert all *.json and *.json.gz file it finds there, writing the 
 resulting CSV files to an output folder. 
-+ Works with Activity Stream Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. 
++ Works with enriched native (EN) and Activity Stream (AS) Tweet JSON produced with Gnip Full-Archive Search, 30-Day Search, and Historical PowerTrack. 
 This tool was designed to convert JSON tweets in bulk. 
 + Retains JSON filename, e.g. MyTweets.json --> MyTweets.csv
 
