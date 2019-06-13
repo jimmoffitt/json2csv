@@ -28,10 +28,10 @@ class Converter
 
   #A look before leaping function that sets root 'simple' keys.
   #Reserves all root primitive keys (like id, links, etc.) before touring any subkey hashes.
-  def get_root_simple_keys(activity)
+  def get_root_simple_keys(tweet)
 
-    #Tour the root level of the activity hash build the keys array.
-    activity.each do |key, value|
+    #Tour the root level of the Tweet hash build the keys array.
+    tweet.each do |key, value|
       #p "keys: " + @keys.to_s
       @key_name = "" #Here at the root level so initialize.
       @level = "root"
@@ -43,14 +43,14 @@ class Converter
     end
   end
 
-  #Generates keys from an activity.  Inspects each root key and branches to handle JSON arrays or hashes.  If the
+  #Generates keys from a Tweet.  Inspects each root key and branches to handle JSON arrays or hashes.  If the
   #root key is a simple type, we are done and have the final key name.
-  def get_keys(activity)
+  def get_keys(tweet)
 
-    get_root_simple_keys(activity)
+    get_root_simple_keys(tweet)
 
-    #Tour the root level of the activity hash build the keys array.
-    activity.each do |key, value|
+    #Tour the root level of the Tweet hash build the keys array.
+    tweet.each do |key, value|
       #p "keys: " + @keys.to_s
       @key_name = "" #Here at the root level so initialize.
       @level = "root"
@@ -64,7 +64,7 @@ class Converter
           @key_name = key
           handle_array(value) #go off and handle arrays!
         else
-          AppLogger.log.warn("WARN: Unexpected type in activity hash: #{value}")
+          AppLogger.log.warn("WARN: Unexpected type in Tweet hash: #{value}")
       end
     end
 
@@ -105,6 +105,7 @@ class Converter
   # }
   #}
   #hash --> hash --> array --> array --> array #WHICH SEEMS WRONG, but that is what we get...
+  # STILL TRUE IN ORIGINAL?
   #location.geo.coordinates.0.0.0
   #location.geo.coordinates.0.1.1
   #location.geo.coordinates.1.0.0
@@ -160,7 +161,7 @@ class Converter
             @key_name = name_root.split(".")[0..-2].join(".")
           end
         else
-          AppLogger.log.warn("WARNING: Unexpected type in activity array: #{value}")
+          AppLogger.log.warn("WARNING: Unexpected type in Tweet array: #{value}")
       end
     }
 
@@ -211,7 +212,7 @@ class Converter
             @key_name = @key_name.split(".")[0..-2].join(".")
           end
         else
-          AppLogger.log.warn("WARNING: Unexpected type in activity hash: #{value}")
+          AppLogger.log.warn("WARNING: Unexpected type in Tweet hash: #{value}")
       end
     }
 
@@ -269,7 +270,7 @@ class Converter
               if !names.include?(name)
                 names << name
               else
-                p 'Need to go deeper?'
+                #p "No action taken. #{name} not added to name array. (build_header)"
               end
             end
           end
@@ -286,9 +287,9 @@ class Converter
     header
   end
 
-  def get_data(activity_hash, key)
+  def get_data(tweet_hash, key)
 
-    lookup = activity_hash
+    lookup = tweet_hash
 
     keys = key.split(".")
 
@@ -330,26 +331,25 @@ class Converter
   end
 
   #Flattens an array of hashes, such as:
-  # twitter_entities.hashtags
-  # twitter_entities.user_mentions
-  # twitter_entities.urls
-  # gnip.urls
-  # gnip.matching_rules
-  # gnip.klout_profile.topics
+  # entities.hashtags
+  # entities.user_mentions
+  # entities.urls
+  # matching_rules
+  # TODO: gnip.klout_profile.topics
   #These are specified by the @config.arrays_to_collapse setting.
 
-  #Template activity provides the following example keys:
-  #twitter_entities.hashtags.0.text
-  #twitter_entities.urls.0.url
-  #twitter_entities.urls.0.expanded_url
-  #twitter_entities.urls.0.display_url
-  #twitter_entities.user_mentions.0.screen_name
-  #twitter_entities.user_mentions.0.name
-  #twitter_entities.user_mentions.0.id
-  #gnip.matching_rules.0.value
-  #gnip.matching_rules.0.tag
+  #Template Tweet provides the following example keys:
+  #entities.hashtags.0.text
+  #entities.urls.0.url
+  #entities.urls.0.expanded_url
+  #entities.urls.0.display_url
+  #entities.user_mentions.0.screen_name
+  #entities.user_mentions.0.name
+  #entities.user_mentions.0.id
+  #matching_rules.0.value
+  #matching_rules.0.tag
 
-  #Note that target activity will often have multiple item arrays, and those are the metadata that we are
+  #Note that target Tweet will often have multiple item arrays, and those are the metadata that we are
   #flattening here.
   #TODO: confirm that since the template will never (?) have multiple arrays (really a doc issue) or the generation
   #TODO: of template keys needs to ignore items after the first one...
@@ -412,7 +412,7 @@ class Converter
     start_time = Time.now
 
     #Load keys from the Tweet Template.
-    activity_template_file = @config.activity_template
+    activity_template_file = @config.tweet_template
     contents = File.read(activity_template_file)
     activity_template = JSON.parse(contents)
     keys_template = Array.new
@@ -457,9 +457,9 @@ class Converter
 
       elsif contents.include?('"info":{"message":"Replay Request Completed"')
 
-        contents.split("\n")[0..-2].each { |line| #drop last "info" member.
+        contents.split("\r")[0..-2].each { |line| #drop last "info" member.
           #Dev TODO: just added the "id": match, untested
-          if line.include?('"id":"')
+          if line.include?('created_at') or line.include?('postedTime')
             activities << line
           end
         }
