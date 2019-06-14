@@ -7,7 +7,7 @@ class AppConfig
 
     attr_accessor :config_name, :config_path,
         #app/script configuration.
-        :activity_template,  #Template for conversion process.
+        :tweet_template,  #Template for conversion process.
         :inbox,
         :outbox,
         :save_json,
@@ -20,7 +20,7 @@ class AppConfig
 
     def initialize
         #Defaults.
-        @activity_template = './templates/tweet_standard.json'
+        @tweet_template = './templates/original_select.json'
         @config_path = './config/' #Default to app config directory.
         @config_name = 'config.yaml'
 
@@ -31,55 +31,57 @@ class AppConfig
         @retain_compression = true #TODO: gz in, gz out if true
         
         #These need to be unique, thus 'urls' require their parent object name.
-        @arrays_to_collapse = 'hashtags,user_mentions,twitter_entities.urls,gnip.urls,matching_rules,topics'
-        @header_overrides = 'actor.location.objectType,actor.location.displayName'
+        @arrays_to_collapse = 'hashtags,user_mentions,entities.urls,urls,matching_rules,topics'
+        @header_overrides = 'user.location.objectType,user.location.displayName'
         @header_mappings = generate_special_header_mappings
     end
 
-    #twitter_entities.hashtags.0.text               --> hashtags
-    #twitter_entities.urls.0.url                    --> twitter_urls
-    #twitter_entities.urls.0.expanded_url           --> twitter_expanded_urls
-    #twitter_entities.urls.0.display_url            --> twitter_display_urls
-    #twitter_entities.user_mentions.0.screen_name   --> user_mention_screen_names
-    #twitter_entities.user_mentions.0.name          --> user_mention_names
-    #twitter_entities.user_mentions.0.id            --> user_mention_ids
-    #gnip.matching_rules.0.value                    --> rule_values
-    #gnip.matching_rules.0.tag                      --> tag_values
+
+    #entities.hashtags.0.text               --> hashtags
+    #entities.urls.0.url                    --> twitter_urls
+    #entities.urls.0.expanded_url           --> twitter_expanded_urls
+    #entities.urls.0.display_url            --> twitter_display_urls
+    #entities.user_mentions.0.screen_name   --> user_mention_screen_names
+    #entities.user_mentions.0.name          --> user_mention_names
+    #entities.user_mentions.0.id            --> user_mention_ids
+    #matching_rules.0.value                    --> rule_values
+    #matching_rules.0.tag                      --> tag_values
 
     def generate_special_header_mappings
 
-        mappings = Hash.new
+	    mappings = Hash.new
 
-        mappings['twitter_entities.hashtags.0.text'] = 'hashtags'
-        mappings['twitter_entities.urls.0.url'] = 'twitter_urls'
-        mappings['twitter_entities.urls.0.expanded_url'] = 'twitter_expanded_urls'
-        mappings['twitter_entities.urls.0.display_url'] = 'twitter_display_urls'
-        mappings['twitter_entities.user_mentions.0.screen_name'] = 'user_mention_screen_names'
-        mappings['twitter_entities.user_mentions.0.name'] = 'user_mention_names'
-        mappings['twitter_entities.user_mentions.0.id'] = 'user_mention_ids'
-        mappings['gnip.matching_rules.0.value'] = 'rule_values'
-        mappings['gnip.matching_rules.0.tag'] = 'rule_tags'
-        mappings['gnip.language.value'] = 'gnip_lang'
+	    mappings['entities.hashtags.0.text'] = 'hashtags'
+	    mappings['entities.urls.0.url'] = 'twitter_urls'
+	    mappings['entities.urls.0.expanded_url'] = 'twitter_expanded_urls'
+	    mappings['entities.urls.0.display_url'] = 'twitter_display_urls'
+	    mappings['entities.user_mentions.0.screen_name'] = 'user_mention_screen_names'
+	    mappings['entities.user_mentions.0.name'] = 'user_mention_names'
+	    mappings['entities.user_mentions.0.id'] = 'user_mention_ids'
+	    mappings['matching_rules.0.value'] = 'rule_values'
+	    mappings['matching_rules.0.tag'] = 'rule_tags'
+	    mappings['language.value'] = 'gnip_lang'
 
-        #Geographical metadata labels.
-        mappings['location.geo.coordinates.0.0.0'] = 'box_sw_long'
-        mappings['location.geo.coordinates.0.0.1'] = 'box_sw_lat'
-        mappings['location.geo.coordinates.0.1.0'] = 'box_nw_long'
-        mappings['location.geo.coordinates.0.1.1'] = 'box_nw_lat'
-        mappings['location.geo.coordinates.0.2.0'] = 'box_ne_long'
-        mappings['location.geo.coordinates.0.2.1'] = 'box_ne_lat'
-        mappings['location.geo.coordinates.0.3.0'] = 'box_se_long'
-        mappings['location.geo.coordinates.0.3.1'] = 'box_se_lat'
-        mappings['geo.coordinates.0'] = 'point_long'
-        mappings['geo.coordinates.1'] = 'point_lat'
+	    #Geographical metadata labels.
+	    mappings['location.geo.coordinates.0.0.0'] = 'box_sw_long'
+	    mappings['location.geo.coordinates.0.0.1'] = 'box_sw_lat'
+	    mappings['location.geo.coordinates.0.1.0'] = 'box_nw_long'
+	    mappings['location.geo.coordinates.0.1.1'] = 'box_nw_lat'
+	    mappings['location.geo.coordinates.0.2.0'] = 'box_ne_long'
+	    mappings['location.geo.coordinates.0.2.1'] = 'box_ne_lat'
+	    mappings['location.geo.coordinates.0.3.0'] = 'box_se_long'
+	    mappings['location.geo.coordinates.0.3.1'] = 'box_se_lat'
+	    mappings['geo.coordinates.0'] = 'point_long'
+	    mappings['geo.coordinates.1'] = 'point_lat'
 
-        #These Klout topics need some help.
-        mappings['gnip.klout_profile.topics.0.klout_topic_id'] = 'klout_topic_id'
-        mappings['gnip.klout_profile.topics.0.display_name'] = 'klout_topic_name'
-        mappings['gnip.klout_profile.topics.0.link'] = 'klout_topic_link'
+	    #These Klout topics need some help.
+	    #mappings['gnip.klout_profile.topics.0.klout_topic_id'] = 'klout_topic_id'
+	    #mappings['gnip.klout_profile.topics.0.display_name'] = 'klout_topic_name'
+	    #mappings['gnip.klout_profile.topics.0.link'] = 'klout_topic_link'
 
-        mappings
+	    mappings
     end
+
 
     #Confirm a directory exists, creating it if necessary.
     def check_directory(directory)
@@ -100,7 +102,7 @@ class AppConfig
       
         settings = {}
         #Downloading, compression.
-        settings['activity_template'] = @activity_template
+        settings['tweet_template'] = @tweet_template
         settings['dir_input'] = @inbox
         settings['dir_output'] = @outbox
         settings['save_json'] = @save_json
@@ -132,7 +134,7 @@ class AppConfig
             config = YAML::load_file(config_file)
         end
 
-        @activity_template = config['json2csv']['activity_template']
+        @tweet_template = config['json2csv']['tweet_template']
         @inbox = check_directory(config['json2csv']['inbox'])
         @outbox = check_directory(config['json2csv']['outbox'])
         @save_json = config['json2csv']['save_json']
